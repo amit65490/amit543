@@ -6,7 +6,7 @@ const rateLimit = require('telegraf-ratelimit');
 const mongo = require('mongodb').MongoClient;
 const axios = require('axios')
 const { token , admins , curr} = require('./details')
-const mongo_url = "mongodb+srv://Shiba786:Iamzaker786@cluster0.z5yy6.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"
+const mongo_url = "mongodb+srv://Prasanth:Prasanth@cluster0.vxqhb.mongodb.net/?retryWrites=true&w=majority"
 const bot = new Telegraf(token);
 
 //Scenes Register 
