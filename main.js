@@ -347,7 +347,7 @@ bot.hears('📊 Statistics',async (ctx) =>{
             var final = payout[0].value
         }
         //
-        let text = "*📊Bot Live Status Here\n\n📤 Total Payouts: "+final.toFixed(3)+" "+curr+"\n\n🙇 Total Users: "+users.length+" Users\n\n✅ Made By* [Your name](https://t.me/your_id)"
+        let text = "*📊Bot Live Status Here\n\n📤 Total Payouts: "+final.toFixed(3)+" "+curr+"\n\n🙇 Total Users: "+users.length+" Users\n\n✅ Made By* [Amit](https://t.me/paladin_tayarra)"
         ctx.replyWithMarkdown(text)
     }catch(e){
         senderr(e)
@@ -1231,7 +1231,7 @@ async function sendJoined(ctx,data){
         let channels = data[0].channels
         text = "*⚠️ Must Join Our All Channels\n\n"
         for (i in channels){
-            text += "➡️ "+channels[i]+"\n"
+            text += channels[i]+"\n"
         }
         text += "\n✅ After Joining Click On '🟢 Joined'*"
         ctx.replyWithMarkdown(text,{reply_markup:{keyboard:[['🟢 Joined']],resize_keyboard:true}})
