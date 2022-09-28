@@ -378,7 +378,7 @@ bot.hears('🗂️ Wallet', async (ctx) =>{
             return
         }
         ctx.replyWithMarkdown("*💡 Send Your Paytm Number*",{reply_markup:{keyboard:[
-            ['🔙 Back']
+            ['⛔ cancel']
         ],resize_keyboard:true}})
         await ctx.scene.enter('getwallet')
     }catch(e){
@@ -391,7 +391,7 @@ bot.hears('🗂️ Wallet', async (ctx) =>{
 getwallet.on('text', async (ctx) =>{
     try{
         const name = 'getwallet'
-        if (ctx.message.text == '🔙 Back'){
+        if (ctx.message.text == '⛔ cancel'){
             starter(ctx)
             await ctx.scene.leave(name)
             return
@@ -457,7 +457,7 @@ bot.hears('💵 Withdraw',async (ctx) =>{
         return
     }
     ctx.replyWithMarkdown("*💡 Send Amount To Withdraw*",{reply_markup:{keyboard:[
-        ['🔙 Back']
+        ['⛔ cancel']
     ],resize_keyboard:true}})
     await ctx.scene.enter('onwith')
     }catch(e){
@@ -472,7 +472,7 @@ onwith.on('text',async (ctx) =>{
         var admin = await db.collection('admin').find({admin:'admin'}).toArray()
         var data = await db.collection('info').find({user:ctx.from.id}).toArray()
         let mini = admin[0].mini
-        if (ctx.message.text == '🔙 Back'){
+        if (ctx.message.text == '⛔ cancel'){
             starter(ctx)
             await ctx.scene.leave(name)
             return
@@ -584,7 +584,7 @@ mini.on('text', async (ctx) =>{
         const name = 'mini'
         let admin = await db.collection('admin').find({admin:'admin'}).toArray()
         let tax = admin[0].tax
-        if (ctx.message.text == '🔙 Back') {
+        if (ctx.message.text == '⛔ cancel') {
             starter(ctx)
         } else if (isNaN(ctx.message.text)){
             ctx.replyWithMarkdown(
@@ -616,7 +616,7 @@ mini.on('text', async (ctx) =>{
 max.on('text', async (ctx) =>{
     try{
         const name = 'max'
-        if (ctx.message.text == '🔙 Back') {
+        if (ctx.message.text == '⛔ cancel') {
             starter(ctx)
         } else if (isNaN(ctx.message.text)){
             ctx.replyWithMarkdown(
@@ -638,7 +638,7 @@ max.on('text', async (ctx) =>{
 getref.on('text', async (ctx) =>{
     try{
         const name = 'getref'
-        if (ctx.message.text == '🔙 Back') {
+        if (ctx.message.text == '⛔ cancel') {
             starter(ctx)
         } else if (isNaN(ctx.message.text)){
             ctx.replyWithMarkdown(
@@ -666,7 +666,7 @@ tax.on('text', async (ctx) =>{
         const tax = parseFloat(ctx.message.text)
         let finalamo = (mini/100) * tax
         let amo =  parseFloat(mini - finalamo)
-        if (ctx.message.text == '🔙 Back') {
+        if (ctx.message.text == '⛔ cancel') {
             starter(ctx)
         } else if (isNaN(ctx.message.text)){
             ctx.replyWithMarkdown(
@@ -692,7 +692,7 @@ tax.on('text', async (ctx) =>{
 subid.on('text',async (ctx)=>{
     try{
         const name = 'subid'
-        if (ctx.message.text == '🔙 Back') {
+        if (ctx.message.text == '⛔ cancel') {
             starter(ctx)
         }else{
             db.collection('admin').updateOne({admin:'admin'},{$set:{subid:ctx.message.text}})
@@ -708,7 +708,7 @@ subid.on('text',async (ctx)=>{
 mid.on('text',async (ctx)=>{
     try{
         const name = 'mid'
-        if (ctx.message.text == '🔙 Back') {
+        if (ctx.message.text == '⛔ cancel') {
             starter(ctx)
         }else{
             db.collection('admin').updateOne({admin:'admin'},{$set:{mid:ctx.message.text}})
@@ -724,7 +724,7 @@ mid.on('text',async (ctx)=>{
 mkey.on('text',async (ctx)=>{
     try{
         const name = 'mid'
-        if (ctx.message.text == '🔙 Back') {
+        if (ctx.message.text == '⛔ cancel') {
             starter(ctx)
         }else{
             db.collection('admin').updateOne({admin:'admin'},{$set:{mkey:ctx.message.text}})
@@ -740,7 +740,7 @@ mkey.on('text',async (ctx)=>{
 comment.on('text',async (ctx)=>{
     try{
         const name = 'comment'
-        if (ctx.message.text == '🔙 Back') {
+        if (ctx.message.text == '⛔ cancel') {
             starter(ctx)
         }else{
             db.collection('admin').updateOne({admin:'admin'},{$set:{comment:ctx.message.text}})
@@ -756,7 +756,7 @@ comment.on('text',async (ctx)=>{
 paycha.on('text',async (ctx) =>{
     try{
         const name = 'paycha'
-        if (ctx.message.text == '🔙 Back') {
+        if (ctx.message.text == '⛔ cancel') {
             starter(ctx)
         }else if(ctx.message.text.split('')[0] != '@'){
             ctx.replyWithMarkdown("*⛔ Channel Username Must Start With @*",{reply_markup:{keyboard:mainkey,resize_keyboard:true}})
@@ -774,7 +774,7 @@ paycha.on('text',async (ctx) =>{
 addcha.on('text',async (ctx) =>{
     try{
         const name = 'addcha'
-        if (ctx.message.text == '🔙 Back') {
+        if (ctx.message.text == '⛔ cancel') {
             starter(ctx)
         }else if(ctx.message.text.split('')[0] != '@'){
             ctx.replyWithMarkdown("*⛔ Channel Username Must Start With @*",{reply_markup:{keyboard:mainkey,resize_keyboard:true}})
@@ -797,7 +797,7 @@ rcha.on('text',async (ctx) =>{
         const name = 'rcha'
         let admin = await db.collection('admin').find({admin:'admin'}).toArray()
         let oldCha = admin[0].channels
-        if (ctx.message.text == '🔙 Back') {
+        if (ctx.message.text == '⛔ cancel') {
             starter(ctx)
         }else if(ctx.message.text.split('')[0] != '@'){
             ctx.replyWithMarkdown("*⛔ Channel Username Must Start With @*",{reply_markup:{keyboard:mainkey,resize_keyboard:true}})
@@ -821,7 +821,7 @@ chabal.on('text',async (ctx)=>{
         const msg = ctx.message.text
         var id = msg.split(' ')[0]
         var amo2 = msg.split(' ')[1]
-        if (msg == '🔙 Back') {
+        if (msg == '⛔ cancel') {
             starter(ctx)
         }else if(id == undefined || amo2 == undefined){
             ctx.replyWithMarkdown("*⚠️Please Provide Telegram Id Or Amount*",{reply_markup:{keyboard:mainkey,resize_keyboard:true}})
@@ -856,7 +856,7 @@ getdetails.on('text',async (ctx) =>{
     try{
         const name = 'getdetails'
         const msg = ctx.message.text
-        if (msg == '🔙 Back') {
+        if (msg == '⛔ cancel') {
             starter(ctx)
         }else{
             let data = await db.collection('info').find({user:parseInt(ctx.message.text)}).toArray()
@@ -934,7 +934,7 @@ bot.command('panel',async (ctx) =>{
 bot.action('change_ref',(ctx) =>{
     try{
         ctx.deleteMessage()
-        ctx.replyWithMarkdown("*💡 Enter New Refer Bonus Amount*",{reply_markup:{keyboard:[['🔙 Back']],resize_keyboard:true}})
+        ctx.replyWithMarkdown("*💡 Enter New Refer Bonus Amount*",{reply_markup:{keyboard:[['⛔ cancel']],resize_keyboard:true}})
         ctx.scene.enter('getref')
     }catch(e){
         senderr(e)
@@ -944,7 +944,7 @@ bot.action('change_ref',(ctx) =>{
 bot.action('change_mini',(ctx) =>{
     try{
         ctx.deleteMessage()
-        ctx.replyWithMarkdown("*💡 Enter New Minimum Withdraw Amount*",{reply_markup:{keyboard:[['🔙 Back']],resize_keyboard:true}})
+        ctx.replyWithMarkdown("*💡 Enter New Minimum Withdraw Amount*",{reply_markup:{keyboard:[['⛔ cancel']],resize_keyboard:true}})
         ctx.scene.enter('mini')
     }catch(e){
         senderr(e)
@@ -954,7 +954,7 @@ bot.action('change_mini',(ctx) =>{
 bot.action('change_max',(ctx) =>{
     try{
         ctx.deleteMessage()
-        ctx.replyWithMarkdown("*💡 Enter New Maximum Withdraw Amount*",{reply_markup:{keyboard:[['🔙 Back']],resize_keyboard:true}})
+        ctx.replyWithMarkdown("*💡 Enter New Maximum Withdraw Amount*",{reply_markup:{keyboard:[['⛔ cancel']],resize_keyboard:true}})
         ctx.scene.enter('max')
     }catch(e){
         senderr(e)
@@ -964,7 +964,7 @@ bot.action('change_max',(ctx) =>{
 bot.action('change_tax',(ctx) =>{
     try{
         ctx.deleteMessage()
-        ctx.replyWithMarkdown("*💡 Enter Withdraw Tax Amount Without %*",{reply_markup:{keyboard:[['🔙 Back']],resize_keyboard:true}})
+        ctx.replyWithMarkdown("*💡 Enter Withdraw Tax Amount Without %*",{reply_markup:{keyboard:[['⛔ cancel']],resize_keyboard:true}})
         ctx.scene.enter('tax')
     }catch(e){
         senderr(e)
@@ -974,7 +974,7 @@ bot.action('change_tax',(ctx) =>{
 bot.action('change_balance',(ctx) =>{
     try{
         ctx.deleteMessage()
-        ctx.replyWithMarkdown('*💡 Send User Telegram Id & Amount\n\n⚠️ Use Format : *`' + ctx.from.id + ' 10`',{reply_markup:{keyboard:[['🔙 Back']],resize_keyboard:true}})
+        ctx.replyWithMarkdown('*💡 Send User Telegram Id & Amount\n\n⚠️ Use Format : *`' + ctx.from.id + ' 10`',{reply_markup:{keyboard:[['⛔ cancel']],resize_keyboard:true}})
         ctx.scene.enter('chabal')
     }catch(e){
         senderr(e)
@@ -984,7 +984,7 @@ bot.action('change_balance',(ctx) =>{
 bot.action('get_details',(ctx) =>{
     try{
         ctx.deleteMessage()
-        ctx.replyWithMarkdown("*💡 Send User Telegram Id *",{reply_markup:{keyboard:[['🔙 Back']],resize_keyboard:true}})
+        ctx.replyWithMarkdown("*💡 Send User Telegram Id *",{reply_markup:{keyboard:[['⛔ cancel']],resize_keyboard:true}})
         ctx.scene.enter('getdetails')
     }catch(e){
         senderr(e)
@@ -1106,7 +1106,7 @@ bot.action('change_cha',async (ctx) =>{
 bot.action('add_cha',(ctx) =>{
     try{
         ctx.deleteMessage()
-        ctx.replyWithMarkdown('*💡 Send Username Of Channel*',{reply_markup:{keyboard:[['🔙 Back']],resize_keyboard:true}})
+        ctx.replyWithMarkdown('*💡 Send Username Of Channel*',{reply_markup:{keyboard:[['⛔ cancel']],resize_keyboard:true}})
         ctx.scene.enter('addcha')
     }catch(e){
         senderr(e)
@@ -1116,7 +1116,7 @@ bot.action('add_cha',(ctx) =>{
 bot.action('r_cha',(ctx) =>{
     try{
         ctx.deleteMessage()
-        ctx.replyWithMarkdown('*💡 Send Username Of Channel*',{reply_markup:{keyboard:[['🔙 Back']],resize_keyboard:true}})
+        ctx.replyWithMarkdown('*💡 Send Username Of Channel*',{reply_markup:{keyboard:[['⛔ cancel']],resize_keyboard:true}})
         ctx.scene.enter('rcha')
     }catch(e){
         senderr(e)
@@ -1126,7 +1126,7 @@ bot.action('r_cha',(ctx) =>{
 bot.action('pay_cha',(ctx) =>{
     try{
         ctx.deleteMessage()
-        ctx.replyWithMarkdown('*💡 Send Username Of Channel*',{reply_markup:{keyboard:[['🔙 Back']],resize_keyboard:true}})
+        ctx.replyWithMarkdown('*💡 Send Username Of Channel*',{reply_markup:{keyboard:[['⛔ cancel']],resize_keyboard:true}})
         ctx.scene.enter('paycha')
     }catch(e){
         senderr(e)
@@ -1151,7 +1151,7 @@ bot.action('pay_comment',(ctx) =>{
     try{
         ctx.deleteMessage()
         ctx.reply(
-            '*💡 Send Your Description For Payment*', { parse_mode: 'markdown', reply_markup: { keyboard: [['🔙 Back']], resize_keyboard: true } }
+            '*💡 Send Your Description For Payment*', { parse_mode: 'markdown', reply_markup: { keyboard: [['⛔ cancel']], resize_keyboard: true } }
         )
         ctx.scene.enter('comment')
     }catch(e){
@@ -1163,7 +1163,7 @@ bot.action('mid',(ctx) =>{
     try{
         ctx.deleteMessage()
         ctx.reply(
-            '*💡 Send Your Merchant ID*', { parse_mode: 'markdown', reply_markup: { keyboard: [['🔙 Back']], resize_keyboard: true } }
+            '*💡 Send Your Merchant ID*', { parse_mode: 'markdown', reply_markup: { keyboard: [['⛔ cancel']], resize_keyboard: true } }
         )
         ctx.scene.enter('mid')
     }catch(e){
@@ -1175,7 +1175,7 @@ bot.action('mkey',(ctx) =>{
     try{
         ctx.deleteMessage()
         ctx.reply(
-            '*💡 Send Your Merchant Key*', { parse_mode: 'markdown', reply_markup: { keyboard: [['🔙 Back']], resize_keyboard: true } }
+            '*💡 Send Your Merchant Key*', { parse_mode: 'markdown', reply_markup: { keyboard: [['⛔ cancel']], resize_keyboard: true } }
         )
         ctx.scene.enter('mkey')
     }catch(e){
@@ -1187,7 +1187,7 @@ bot.action('subid',(ctx) =>{
     try{
         ctx.deleteMessage()
         ctx.reply(
-            '*💡 Send Your Subwallet Id*', { parse_mode: 'markdown', reply_markup: { keyboard: [['🔙 Back']], resize_keyboard: true } }
+            '*💡 Send Your Subwallet Id*', { parse_mode: 'markdown', reply_markup: { keyboard: [['⛔ cancel']], resize_keyboard: true } }
         )
         ctx.scene.enter('subid')
     }catch(e){
@@ -1198,7 +1198,7 @@ bot.action('subid',(ctx) =>{
 broad.on('text',async (ctx) =>{
     let uData = await db.collection('info').find({},{projection:{user:1,'_id':0}}).toArray()
     let msg = ctx.message.text
-    if (msg == '🔙 Back') {
+    if (msg == '⛔ cancel') {
             starter(ctx)
             ctx.scene.leave('broad')
             return
